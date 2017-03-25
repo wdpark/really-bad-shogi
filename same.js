@@ -31,9 +31,9 @@ createSprites();
 
 function createSprites()
 {
-    
+
     var pieceimages = ["/images/lance.png", "/images/knight.png", "/images/general_silver.png", "/images/general_gold.png", "/images/king_low.png", "/images/bishop.png", "/images/rook.png", "/images/pawn.png", "/images/bishop_promoted.png", "/images/dragon.png", "/images/king_high.png", "/images/knight_promoted.png", "/images/lance_promoted.png", "/images/pawn_promoted.png", "/images/silver_promoted.png"]
-    
+
     for(var x = 0; x < grid_sprite.length; x++)
     {
         for(var y = 0; y < grid_sprite[0].length; y++)
@@ -44,7 +44,7 @@ function createSprites()
             // }
 
             piece = PIXI.Sprite.fromImage(pieceimages[grid[x][y].player]); //picks 1 or 2, make it either knight or lance
-            
+
             piece.x = x*78 + 18.5;
             piece.y = y*78 + 6;
 
@@ -60,9 +60,9 @@ function createSprites()
 }
 
 function updateSprites()
-{ 
+{
     var pieceimages = ["/images/lance.png", "/images/knight.png", "/images/general_silver.png", "/images/general_gold.png", "/images/king_low.png", "/images/bishop.png", "/images/rook.png", "/images/pawn.png", "/images/bishop_promoted.png", "/images/dragon.png", "/images/king_high.png", "/images/knight_promoted.png", "/images/lance_promoted.png", "/images/pawn_promoted.png", "/images/silver_promoted.png"]
-    
+
     for(var x = 0; x < grid_sprite.length; x++)
     {
         for(var y = 0; y < grid_sprite[0].length; y++)
@@ -126,7 +126,29 @@ function checkMovement(){
 
 }
 
+var randomNum = []
 
+function standard()
+{
+  rngPiece();
+
+  for(var i = 1; i < 5; i++){
+
+  }
+
+}
+
+function rngPiece()
+{
+  for(var i = 0; i < 9; i++){
+
+    randomNum.push(Math.floor(Math.random()*4+1));
+
+  }
+    randomNum.push(5);
+    console.log(randomNum);
+}
+rngPiece();
 
 function movePiece(obj){
 
