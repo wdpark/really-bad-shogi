@@ -66,9 +66,12 @@ function createSprites()
                 piece.anchor.y = 1;
                 piece.y = (piece.y + 7)
                 piece.rotation = Math.PI
+                piece.hitArea = new PIXI.Rectangle(-80, -80, 80, 80);
+            }
+            else {
+                piece.hitArea = new PIXI.Rectangle(0, 0, 80, 80);
             }
             piece.interactive = true;
-            piece.hitArea = new PIXI.Rectangle(0, 0, 80, 80);
             grid_sprite[x][y] = piece;
             piece.mouseover = function(mouseData)
             {
