@@ -61,6 +61,12 @@ function createSprites()
 
             piece.state = "alive";
             piece.clicks = 0;
+            if(x == 0){
+                piece.anchor.x = 1;
+                piece.anchor.y = 1;
+                piece.y = (piece.y + 7)
+                piece.rotation = Math.PI
+            }
             piece.interactive = true;
             piece.hitArea = new PIXI.Rectangle(0, 0, 80, 80);
             grid_sprite[x][y] = piece;
