@@ -1,5 +1,5 @@
 
-var app = new PIXI.Application(710, 710, {backgroundColor : 0xffffff});
+var app = new PIXI.Application(750, 750, {backgroundColor : 0xffffff});
 document.body.appendChild(app.view);
 var renderer = PIXI.autoDetectRenderer(1, 1);
 document.body.appendChild(renderer.view);
