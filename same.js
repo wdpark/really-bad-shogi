@@ -75,7 +75,7 @@ function updateSprites()
             piece = PIXI.Sprite.fromImage(pieceimages[grid[x][y].player]);
             piece.x = x*78 + 18.5;
             piece.y = y*78 + 6;
-
+            // console.log();
             piece.state = "alive";
             piece.clicks = 0;
             piece.interactive = true;
@@ -86,19 +86,19 @@ function updateSprites()
             {
               piece.state = "mouseover";
               this.alpha = .6;
-              if(piece.clicks == 1){
+              if(this.clicks == 1){
                 //   stage.removeChild(piece);
-                  piece.state = "moving";
+                  this.state = "moving";
                   movePiece(piece);
 
-                  stage.addChild(piece);
-                  console.log(piece.x,piece.y);
+                  stage.addChild(this);
+                  console.log(this.x,this.y);
                   console.log(grid_sprite[x]);
                   console.log(x,y);
                   grid_sprite[x][y] = piece;
 
-                  console.log(piece.x + ", " + piece.y);
-                  console.log("clicks:" + piece.clicks);
+                  console.log(this.x + ", " + this.y);
+                  console.log("clicks:" + this.clicks);
               }
             }
 
@@ -111,12 +111,12 @@ function updateSprites()
 
             piece.click = function(mouseData)
             {
-              piece.clicks += 1;
-              stage.removeChild(piece);
+              this.clicks += 1;
+              stage.removeChild(this);
               console.log("mouseClick");
-              if(piece.clicks == 2){
+              if(this.clicks == 2){
                 movePiece(piece);
-                piece.clicks == 0;
+                this.clicks == 0;
               }
             }
 
@@ -129,6 +129,8 @@ document.addEventListener('mousemove', checkMovement, false);
 document.addEventListener('click', checkMovement, false);
 
 function checkMovement(){
+
+    // updateSprites()
 
 }
 
@@ -163,7 +165,6 @@ function movePiece(obj){
   obj.x = e.clientX;
   obj.y = e.clientY;
   console.log("x:" + e.clientX + ", y:" + e.clientY);
-
 }
 // start animating
 animate();
