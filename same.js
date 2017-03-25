@@ -1,6 +1,9 @@
 var renderer = PIXI.autoDetectRenderer(750, 750, {backgroundColor : 0xffffff});
 document.body.appendChild(renderer.view);
 var stage = new PIXI.Container();
+stage.interactive = true;
+stage.buttonMode = true;
+stage.defaultCursor = "cursor";
 
 var backGrid = PIXI.Sprite.fromImage("images/grid.jpg");
 stage.addChild(backGrid)
@@ -88,8 +91,7 @@ function updateSprites()
                 //   console.log("");
                 //   stage.removeChild(piece);
                   this.state = "moving";
-                  movePiece(this);
-
+                  this.alpha = 1
                   stage.addChild(this);
                 //   console.log(this.x,this.y);
                 //   console.log(grid_sprite[x]);
@@ -118,26 +120,35 @@ function updateSprites()
             piece.mousedown = function(mouseData)
             {
                 this.clicks += 1;
-                console.log("Same");
-                this.alpha = 1
-                // stage.removeChild(this);
-                // console.log("mouseClick");
-                // this.state= "moving"
-                // if(this.clicks == 2){
-                //   movePiece(piece);
-                //   this.clicks == 0;
-                // }
+                if(this.clicks == 2){
+                  this.alpha == 1;
+                  this.dragging = false;
+                  this.data = null;
+                  console.log(this.x);
+                  this.x = Math.round(this.x / 78) * 78 + 18.5;
+                  console.log(this.x);
+                  this.y = Math.round(this.y / 78) * 78 + 6;
+                  this.clicks = 0
+                }
+                else {
+                    this.alpha == 0;
+                    console.log("Same");
+                    console.log(mouseData.data);
+                    this.data = mouseData.data;
+                    this.dragging = true;
+                }
             }
 
-            // piece.mousemove = function(mouseData)
-            // {
-            //   this.state= "moving"
-            // }
-            //
-            // piece.mouseup = function(mouseData)
-            // {
-            //     this.state = "stopped"
-            // }
+            piece.mousemove = function(mouseData)
+            {
+              this.state= "moving"
+              if (this.dragging)
+                {
+                    var newPosition = this.data.getLocalPosition(this.parent);
+                    this.position.x = newPosition.x - 40;
+                    this.position.y = newPosition.y - 40;
+                }
+            }
 
             stage.addChild(piece);
         }
