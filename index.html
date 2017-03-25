@@ -5,42 +5,75 @@ meme
 <script src="pixi.min.js"></script>
 <script>
 
-console.log("memo.");
-
-var app = new PIXI.Application(800, 600, {backgroundColor : 0x1099bb});
+var app = new PIXI.Application(800, 800, {backgroundColor : 0x1099bb});
 document.body.appendChild(app.view);
-
-// create a new Sprite from an image path
-var bunny = PIXI.Sprite.fromImage('oc.jpg')
-
-// center the sprite's anchor point
-bunny.anchor.set(0.5);
-
-// move the sprite to the center of the screen
-bunny.x = app.renderer.width / 2;
-bunny.y = app.renderer.height / 2;
-
-app.stage.addChild(bunny);
-
-// Listen for animate update
-app.ticker.add(function(delta) {
-    // just for fun, let's rotate mr rabbit a little
-    // delta is 1 if running at 100% performance
-    // creates frame-independent tranformation
-    bunny.rotation += 0.1 * delta;
-});
-
-
-//Create the renderer
 var renderer = PIXI.autoDetectRenderer(256, 256);
-
-//Add the canvas to the HTML document
 document.body.appendChild(renderer.view);
-
-//Create a container object called the `stage`
 var stage = new PIXI.Container();
-
-//Tell the `renderer` to `render` the `stage`
 renderer.render(stage);
+
+
+
+var grid_sprite = [];
+for(var x = 0; x < 9; x++)
+{
+  grid_sprite.push([]);
+  for(var y = 0; y < 9; y++)
+  {
+    var piece = PIXI.Sprite.fromImage("oc.jpg");
+    piece.x = x*80;
+    piece.y = y*80;
+    app.stage.addChild(piece);
+    grid_sprite[x].push(piece);
+  }
+}
+
+var grid = [];
+for(var x = 0; x < 9; x++)
+{
+  grid.push([]);
+  for(var y = 0; y < 9; y++)
+  {
+    grid[x].push({});
+    grid[x][y].pieceid = 0;
+    if(y < 4)
+    {
+      grid[x][y].player = 0;
+    }
+    else
+    {
+      grid[x][y].player = 1;
+    }
+  }
+}
+
+function updateSprites()
+{
+  for(var x = 0; x < 9; x++)
+  {
+    for(var y = 0; y < 9; y++)
+    {
+
+        app.stage.removeChild(grid_sprite[x][y]);
+        var piece;
+        if(grid[x][y].player == 0)
+        {
+          piece = PIXI.Sprite.fromImage("oc.jpg");
+        }
+        if(grid[x][y].player == 1)
+        {
+          piece = PIXI.Sprite.fromImage("dark_oc.jpg");
+        }
+        piece.x = x*80;
+        piece.y = y*80;
+        app.stage.addChild(piece);
+        grid_sprite[x][y] = piece;
+    }
+  }
+}
+
+
+grid[3][3] = {pieceid: 0, player: 1};
+updateSprites();
 
 </script>
