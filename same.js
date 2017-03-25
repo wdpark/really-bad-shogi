@@ -55,7 +55,7 @@ function createSprites()
             xy = get_ranxy()
             piece = PIXI.Sprite.fromImage(random[itr])
             piece.x = (xy[0]*78 + 18.5);
-            piece.y = (xy[1]*78 + 6)  + (x*468);
+            piece.y = (xy[1]*78 + 8)  + (x*468);
             if (random[itr] == "/images/king.png") { console.log("DSD",piece.x,piece.y);}
             places.push([xy[0],xy[1]])
 
@@ -64,7 +64,7 @@ function createSprites()
             if(x == 0){
                 piece.anchor.x = 1;
                 piece.anchor.y = 1;
-                piece.y = (piece.y + 7)
+                piece.y = (piece.y + 4)
                 piece.rotation = Math.PI
                 piece.hitArea = new PIXI.Rectangle(-80, -80, 80, 80);
             }
