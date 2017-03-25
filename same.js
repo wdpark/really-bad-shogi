@@ -1,4 +1,4 @@
-var renderer = PIXI.autoDetectRenderer(750, 750, {backgroundColor : 0xffffff});
+var renderer = PIXI.autoDetectRenderer(1000, 750, {backgroundColor : 0xffffff});
 document.body.appendChild(renderer.view);
 var stage = new PIXI.Container();
 stage.interactive = true;
