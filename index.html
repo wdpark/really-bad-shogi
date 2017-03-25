@@ -15,7 +15,8 @@ document.body.appendChild(renderer.view);
 var stage = new PIXI.Container();
 renderer.render(stage);
 
-
+var backGrid = PIXI.Sprite.fromImage("images/grid.jpg");
+app.stage.addChild(backGrid)
 
 var grid_sprite = [];
 for(var x = 0; x < 9; x++)
