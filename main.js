@@ -44,19 +44,15 @@ function updateSprites()
             piece.y = y*78 + 18.;
             app.stage.addChild(piece);
             grid_sprite[x][y] = piece;
+
+            // var pieceimages = ["images/oc.jpg", "images/oc.jpg", "images/oc.jpg", "images/oc.jpg", "images/oc.jpg", "images/oc.jpg", "images/oc.jpg", "images/oc.jpg", "images/oc.jpg", "images/oc.jpg", "images/oc.jpg", "images/oc.jpg", "images/oc.jpg", "images/oc.jpg", "images/oc.jpg"]
+            // piece = PIXI.Sprite.fromImage(pieceimages[grid[x][y].pieceid]);
+            // if(grid[x][y].player == 1)
+            // {
+            //   var pieceimages = ["images/oc.jpg", "images/oc.jpg", "images/oc.jpg", "images/oc.jpg", "images/oc.jpg", "images/oc.jpg", "images/oc.jpg", "images/oc.jpg", "images/oc.jpg", "images/oc.jpg", "images/oc.jpg", "images/oc.jpg", "images/oc.jpg", "images/oc.jpg", "images/oc.jpg"]
+            //   piece = PIXI.Sprite.fromImage(pieceimages[grid[x][y].pieceid]);
+            // }
         }
-          var pieceimages = ["images/oc.jpg", "images/oc.jpg", "images/oc.jpg", "images/oc.jpg", "images/oc.jpg", "images/oc.jpg", "images/oc.jpg", "images/oc.jpg", "images/oc.jpg", "images/oc.jpg", "images/oc.jpg", "images/oc.jpg", "images/oc.jpg", "images/oc.jpg", "images/oc.jpg"]
-          piece = PIXI.Sprite.fromImage(pieceimages[grid[x][y].pieceid]);
-        }
-        if(grid[x][y].player == 1)
-        {
-          var pieceimages = ["images/oc.jpg", "images/oc.jpg", "images/oc.jpg", "images/oc.jpg", "images/oc.jpg", "images/oc.jpg", "images/oc.jpg", "images/oc.jpg", "images/oc.jpg", "images/oc.jpg", "images/oc.jpg", "images/oc.jpg", "images/oc.jpg", "images/oc.jpg", "images/oc.jpg"]
-          piece = PIXI.Sprite.fromImage(pieceimages[grid[x][y].pieceid]);
-        }
-        piece.x = x*78 + 18.5;
-        piece.y = y*78 + 18.;
-        app.stage.addChild(piece);
-        grid_sprite[x][y] = piece;
     }
 }
 
