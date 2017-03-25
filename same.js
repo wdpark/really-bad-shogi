@@ -52,24 +52,16 @@ function updateSprites()
               piece.state = "mouseover";
               this.alpha = .2;
             }
-            piece.mouseout = function(mouseData)
-            {
-              console.log("mouseover");
-              piece.state = "mouseover";
-              this.alpha = 1;
-            }
+
 
             piece.click = function(mouseData)
             {
               piece.clicks ++;
               console.log("mouseClick");
-              // if(piece.clicks == 1){
-              //   piece.state = movin
-              // }
-              // if(piece.clicks == 2 && ){
-              //   piece.x = event.clientX;
-              //   piece.y = event.clientY;
-              // }
+              if(piece.clicks == 2){
+                movePiece(piece);
+                piece.clicks == 0;
+              }
             }
 
             grid_sprite[x][y] = piece;
@@ -92,3 +84,6 @@ function animate() {
   // render the root container
   renderer.render(stage);
 };
+
+
+updateSprites();
