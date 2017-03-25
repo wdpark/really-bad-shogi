@@ -87,9 +87,10 @@ function updateSprites()
               piece.state = "mouseover";
               this.alpha = .6;
               if(this.clicks == 1){
+                //   console.log("");
                 //   stage.removeChild(piece);
                   this.state = "moving";
-                  movePiece(piece);
+                  movePiece(this);
 
                   stage.addChild(this);
                   console.log(this.x,this.y);
@@ -108,16 +109,26 @@ function updateSprites()
             }
 
 
-
-            piece.click = function(mouseData)
+            piece.mousedown = function(mouseData)
             {
-              this.clicks += 1;
-              stage.removeChild(this);
-              console.log("mouseClick");
-              if(this.clicks == 2){
-                movePiece(piece);
-                this.clicks == 0;
-              }
+                this.clicks += 1;
+                // stage.removeChild(this);
+                // console.log("mouseClick");
+                // this.state= "moving"
+                // if(this.clicks == 2){
+                //   movePiece(piece);
+                //   this.clicks == 0;
+                // }
+            }
+
+            piece.mousemove = function(mouseData)
+            {
+              this.state= "moving"
+            }
+
+            piece.mouseup = function(mouseData)
+            {
+                this.state = "stopped"
             }
 
             stage.addChild(piece);
