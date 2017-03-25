@@ -84,8 +84,6 @@ function updateSprites()
 
             piece.mouseover = function(mouseData)
             {
-              piece.state = "mouseover";
-              this.alpha = .6;
               if(this.clicks == 1){
                 //   console.log("");
                 //   stage.removeChild(piece);
@@ -93,25 +91,35 @@ function updateSprites()
                   movePiece(this);
 
                   stage.addChild(this);
-                  console.log(this.x,this.y);
-                  console.log(grid_sprite[x]);
-                  console.log(x,y);
-                  grid_sprite[x][y] = piece;
-
-                  console.log(this.x + ", " + this.y);
-                  console.log("clicks:" + this.clicks);
+                //   console.log(this.x,this.y);
+                //   console.log(grid_sprite[x]);
+                //   console.log(x,y);
+                //   grid_sprite[x][y] = piece;
+                  //
+                //   console.log(this.x + ", " + this.y);
+                //   console.log("clicks:" + this.clicks);
+              }
+              else {
+                  piece.state = "mouseover";
+                  this.alpha = .6;
               }
             }
 
             piece.mouseout = function(mouseData)
             {
-              this.alpha = 1;
+              if(this.clicks == 1){
+              }
+              else {
+                  this.alpha = 1
+              }
             }
 
 
             piece.mousedown = function(mouseData)
             {
                 this.clicks += 1;
+                console.log("Same");
+                this.alpha = 1
                 // stage.removeChild(this);
                 // console.log("mouseClick");
                 // this.state= "moving"
@@ -121,15 +129,15 @@ function updateSprites()
                 // }
             }
 
-            piece.mousemove = function(mouseData)
-            {
-              this.state= "moving"
-            }
-
-            piece.mouseup = function(mouseData)
-            {
-                this.state = "stopped"
-            }
+            // piece.mousemove = function(mouseData)
+            // {
+            //   this.state= "moving"
+            // }
+            //
+            // piece.mouseup = function(mouseData)
+            // {
+            //     this.state = "stopped"
+            // }
 
             stage.addChild(piece);
         }
@@ -170,12 +178,12 @@ function rngPiece()
 rngPiece();
 
 function movePiece(obj){
-
-  var e = window.event;
-
-  obj.x = e.clientX;
-  obj.y = e.clientY;
-  console.log("x:" + e.clientX + ", y:" + e.clientY);
+    obj.alpha = 0
+  // var e = window.event;
+  //
+  // obj.x = e.clientX;
+  // obj.y = e.clientY;
+  // console.log("x:" + e.clientX + ", y:" + e.clientY);
 }
 // start animating
 animate();
