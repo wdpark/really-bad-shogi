@@ -36,7 +36,7 @@ updateSprites();
 function updateSprites()
 {
     var piece;
-    var pieceimages = ["/images/oc.jpg", "/images/dark_oc.jpg"]
+    var pieceimages = ["/images/lance.png", "/images/knight.png", "/images/general_silver.png", "/images/general_gold.png", "/images/king_low.png", "/images/bishop.png", "/images/rook.png", "/images/pawn.png", "/images/bishop_promoted.png", "/images/dragon.png", "/images/king_high.png", "/images/knight_promoted.png", "/images/lance_promoted.png", "/images/pawn_promoted.png", "/images/silver_promoted.png"]
     for(var x = 0; x < 9; x++)
     {
         for(var y = 0; y < 9; y++)
