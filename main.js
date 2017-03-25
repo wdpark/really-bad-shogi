@@ -44,7 +44,7 @@ function updateSprites()
             app.stage.removeChild(grid_sprite[x][y]);
             piece = PIXI.Sprite.fromImage(pieceimages[grid[x][y].player]);
             piece.x = x*78 + 18.5;
-            piece.y = y*78 + 18.;
+            piece.y = y*78 + 6;
 
             piece.state = "alive";
             piece.clicks = 0;
