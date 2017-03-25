@@ -45,12 +45,12 @@ function updateSprites()
             piece.clicks = 0;
             stage.addChild(piece);
             piece.interactive = true;
-            piece.hitArea = new PIXI.Rectangle(0,0,81,81)
+            piece.hitArea = new PIXI.Rectangle(0,0,80,80)
             piece.mouseover = function(mouseData)
             {
               console.log("mouseover");
               piece.state = "mouseover";
-              this.alpha = .8;
+              this.alpha = .6;
             }
 
             piece.mouseout = function(mouseData)
