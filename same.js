@@ -1,14 +1,9 @@
-
-var app = new PIXI.Application(750, 750, {backgroundColor : 0xffffff});
-document.body.appendChild(app.view);
-var renderer = PIXI.autoDetectRenderer(1, 1);
+var renderer = PIXI.autoDetectRenderer(750, 750, {backgroundColor : 0xffffff});
 document.body.appendChild(renderer.view);
 var stage = new PIXI.Container();
-renderer.render(stage);
 
 var backGrid = PIXI.Sprite.fromImage("images/grid.jpg");
-app.stage.addChild(backGrid)
-
+stage.addChild(backGrid)
 var grid = [];
 var grid_sprite = [];
 for(var x = 0; x < 9; x++)
@@ -29,7 +24,6 @@ for(var x = 0; x < 9; x++)
     }
   }
 }
-
 updateSprites();
 
 
@@ -41,20 +35,28 @@ function updateSprites()
     {
         for(var y = 0; y < 9; y++)
         {
-            app.stage.removeChild(grid_sprite[x][y]);
+            stage.removeChild(grid_sprite[x][y]);
             piece = PIXI.Sprite.fromImage(pieceimages[grid[x][y].player]);
+            // piece = PIXI.Sprite.fromImage("images/bullet_hitbox_rect.png");
             piece.x = x*78 + 18.5;
             piece.y = y*78 + 6;
 
             piece.state = "alive";
             piece.clicks = 0;
+            stage.addChild(piece);
             piece.interactive = true;
-            piece.hitArea = new PIXI.Rectangle(piece.x, piece.y, 70, 70);
-
+            piece.hitArea = new PIXI.Rectangle(0,0,81,81)
             piece.mouseover = function(mouseData)
             {
               console.log("mouseover");
               piece.state = "mouseover";
+              this.alpha = .2;
+            }
+            piece.mouseout = function(mouseData)
+            {
+              console.log("mouseover");
+              piece.state = "mouseover";
+              this.alpha = 1;
             }
 
             piece.click = function(mouseData)
@@ -70,7 +72,6 @@ function updateSprites()
               // }
             }
 
-            app.stage.addChild(piece);
             grid_sprite[x][y] = piece;
 
             // var pieceimages = ["images/oc.jpg", "images/oc.jpg", "images/oc.jpg", "images/oc.jpg", "images/oc.jpg", "images/oc.jpg", "images/oc.jpg", "images/oc.jpg", "images/oc.jpg", "images/oc.jpg", "images/oc.jpg", "images/oc.jpg", "images/oc.jpg", "images/oc.jpg", "images/oc.jpg"]
@@ -83,8 +84,11 @@ function updateSprites()
         }
     }
 }
+// start animating
+animate();
 
-//changes the piece
-grid[2][2].pieceid = 1;
-updateSprites();
-console.log(grid_sprite[1][1].clicks);
+function animate() {
+  requestAnimationFrame(animate);
+  // render the root container
+  renderer.render(stage);
+};
