@@ -50,9 +50,15 @@ function updateSprites()
             {
               console.log("mouseover");
               piece.state = "mouseover";
-              this.alpha = .2;
+              this.alpha = .8;
             }
 
+            piece.mouseout = function(mouseData)
+            {
+              console.log("mouseover");
+              piece.state = "mouseover";
+              this.alpha = 1;
+            }
 
             piece.click = function(mouseData)
             {
