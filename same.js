@@ -86,10 +86,7 @@ function updateSprites()
             piece.mouseover = function(mouseData)
             {
               if(this.clicks == 1){
-                //   console.log("");
-                //   stage.removeChild(piece);
                   this.state = "moving";
-                  this.alpha = 1
                   stage.addChild(this);
                 //   console.log(this.x,this.y);
                 //   console.log(grid_sprite[x]);
@@ -108,6 +105,7 @@ function updateSprites()
             piece.mouseout = function(mouseData)
             {
               if(this.clicks == 1){
+                  // should never happen
               }
               else {
                   this.alpha = 1
@@ -119,19 +117,14 @@ function updateSprites()
             {
                 this.clicks += 1;
                 if(this.clicks == 2){
-                  this.alpha == 1;
+                  this.alpha = 1;
                   this.dragging = false;
                   this.data = null;
-                  console.log(this.x);
                   this.x = Math.round(this.x / 78) * 78 + 18.5;
-                  console.log(this.x);
                   this.y = Math.round(this.y / 78) * 78 + 6;
                   this.clicks = 0
                 }
                 else {
-                    this.alpha == 0;
-                    console.log("Same");
-                    console.log(mouseData.data);
                     this.data = mouseData.data;
                     this.dragging = true;
                 }
@@ -183,7 +176,7 @@ console.log(random);
 
 
 function movePiece(obj){
-    obj.alpha = 0
+    // obj.alpha = 0
   // var e = window.event;
   //
   // obj.x = e.clientX;
