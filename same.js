@@ -35,7 +35,7 @@ var random =[];
 
 function rng()
 {
-  for(var i = 0; i < 8; i++)
+  for(var i = 0; i < 10; i++)
   {
     random[i] = pieceimages[Math.floor(Math.random() * 7)];
     random.push("/images/king.png")
