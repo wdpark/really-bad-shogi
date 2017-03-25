@@ -36,7 +36,7 @@ updateSprites();
 function updateSprites()
 {
     var piece;
-    var pieceimages = ["images/oc.jpg", "images/dark_oc.jpg"]
+    var pieceimages = ["/images/oc.jpg", "/images/dark_oc.jpg"]
     for(var x = 0; x < 9; x++)
     {
         for(var y = 0; y < 9; y++)
