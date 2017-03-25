@@ -1,17 +1,19 @@
 <html>
-meme
+
+<center>really-bad-shogi<br>
+by donnel and williamo<br>
+palyhacks 2017<br></center>
 </html>
 
 <script src="pixi.min.js"></script>
 <script>
 
-var app = new PIXI.Application(800, 800, {backgroundColor : 0x1099bb});
+var app = new PIXI.Application(710, 710, {backgroundColor : 0xffffff});
 document.body.appendChild(app.view);
-var renderer = PIXI.autoDetectRenderer(256, 256);
+var renderer = PIXI.autoDetectRenderer(1, 1);
 document.body.appendChild(renderer.view);
 var stage = new PIXI.Container();
 renderer.render(stage);
-
 
 
 var grid_sprite = [];
@@ -25,6 +27,7 @@ for(var x = 0; x < 9; x++)
     piece.y = y*80;
     app.stage.addChild(piece);
     grid_sprite[x].push(piece);
+
   }
 }
 
@@ -58,7 +61,8 @@ function updateSprites()
         var piece;
         if(grid[x][y].player == 0)
         {
-          piece = PIXI.Sprite.fromImage("oc.jpg");
+          var pieceimages = ["oc.jpg", "oc.jpg"]
+          piece = PIXI.Sprite.fromImage(pieceimages[grid[x][y].pieceid]);
         }
         if(grid[x][y].player == 1)
         {
@@ -72,8 +76,8 @@ function updateSprites()
   }
 }
 
-
-grid[3][3] = {pieceid: 0, player: 1};
+//changes the piece
+grid[2][2].pieceid = 1;
 updateSprites();
 
 </script>
