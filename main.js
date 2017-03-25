@@ -9,25 +9,12 @@ renderer.render(stage);
 var backGrid = PIXI.Sprite.fromImage("images/grid.jpg");
 app.stage.addChild(backGrid)
 
+var grid = [];
 var grid_sprite = [];
 for(var x = 0; x < 9; x++)
 {
-  grid_sprite.push([]);
-  for(var y = 0; y < 9; y++)
-  {
-    var piece = PIXI.Sprite.fromImage("images/oc.jpg");
-    piece.x = x*80;
-    piece.y = y*80;
-    app.stage.addChild(piece);
-    grid_sprite[x].push(piece);
-
-  }
-}
-
-var grid = [];
-for(var x = 0; x < 9; x++)
-{
   grid.push([]);
+  grid_sprite.push([]);
   for(var y = 0; y < 9; y++)
   {
     grid[x].push({});
@@ -45,28 +32,32 @@ for(var x = 0; x < 9; x++)
 
 function updateSprites()
 {
-  for(var x = 0; x < 9; x++)
-  {
-    for(var y = 0; y < 9; y++)
+    var piece;
+    var pieceimages = ["images/oc.jpg", "images/dark_oc.jpg"]
+    for(var x = 0; x < 9; x++)
     {
-
-        app.stage.removeChild(grid_sprite[x][y]);
-        var piece;
-        if(grid[x][y].player == 0)
+        for(var y = 0; y < 9; y++)
         {
-          var pieceimages = ["images/oc.jpg", "images/oc.jpg"]
+            app.stage.removeChild(grid_sprite[x][y]);
+            piece = PIXI.Sprite.fromImage(pieceimages[grid[x][y].player]);
+            piece.x = x*78 + 18.5;
+            piece.y = y*78 + 18.;
+            app.stage.addChild(piece);
+            grid_sprite[x][y] = piece;
+        }
+          var pieceimages = ["images/oc.jpg", "images/oc.jpg", "images/oc.jpg", "images/oc.jpg", "images/oc.jpg", "images/oc.jpg", "images/oc.jpg", "images/oc.jpg", "images/oc.jpg", "images/oc.jpg", "images/oc.jpg", "images/oc.jpg", "images/oc.jpg", "images/oc.jpg", "images/oc.jpg"]
           piece = PIXI.Sprite.fromImage(pieceimages[grid[x][y].pieceid]);
         }
         if(grid[x][y].player == 1)
         {
-          piece = PIXI.Sprite.fromImage("images/dark_oc.jpg");
+          var pieceimages = ["images/oc.jpg", "images/oc.jpg", "images/oc.jpg", "images/oc.jpg", "images/oc.jpg", "images/oc.jpg", "images/oc.jpg", "images/oc.jpg", "images/oc.jpg", "images/oc.jpg", "images/oc.jpg", "images/oc.jpg", "images/oc.jpg", "images/oc.jpg", "images/oc.jpg"]
+          piece = PIXI.Sprite.fromImage(pieceimages[grid[x][y].pieceid]);
         }
-        piece.x = x*80;
-        piece.y = y*80;
+        piece.x = x*78 + 18.5;
+        piece.y = y*78 + 18.;
         app.stage.addChild(piece);
         grid_sprite[x][y] = piece;
     }
-  }
 }
 
 //changes the piece
