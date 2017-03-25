@@ -104,10 +104,7 @@ function updateSprites()
 
             piece.mouseout = function(mouseData)
             {
-              if(this.clicks == 1){
-                  // should never happen
-              }
-              else {
+              if(this.clicks != 1){
                   this.alpha = 1
               }
             }
@@ -125,36 +122,57 @@ function updateSprites()
                   this.clicks = 0
                 }
                 else {
-                    this.data = mouseData.data;
-                    this.dragging = true;
+                  this.data = mouseData.data;
+                  this.dragging = true;
                 }
+
+
+                if(grid_sprite[Math.floor((this.x-18.5)/78)][Math.floor((this.y-6)/78)]!==null){
+                  grid[Math.floor((this.x-18.5)/78)][Math.floor((this.y-6)/78)].removeChild();
+                }
+
+                console.log(this.x + ", " + this.y);
+                console.log(checkCollision(this.x, this.y));
+
+                checkCollision(this.x, this.y);
+
             }
 
-            piece.mousemove = function(mouseData)
-            {
-              this.state= "moving"
-              if (this.dragging)
-                {
-                    var newPosition = this.data.getLocalPosition(this.parent);
-                    this.position.x = newPosition.x - 40;
-                    this.position.y = newPosition.y - 40;
-                }
-            }
+            // piece.mousemove = function(mouseData)
+            // {
+            //   this.state= "moving"
+            //   if (this.dragging)
+            //     {
+            //         var newPosition = this.data.getLocalPosition(this.parent);
+            //         this.position.x = newPosition.x - 40;
+            //         this.position.y = newPosition.y - 40;
+
+            //     }
+            // }
+
 
             stage.addChild(piece);
+
         }
     }
 }
 
-document.addEventListener('mousemove', checkMovement, false);
-document.addEventListener('click', checkMovement, false);
+// function checkCollision(varx, vary){
 
-function checkMovement(){
+//   // for(var tempX=0; tempX<9; tempX++){
+//   //   for(var tempY=0; tempY<9; tempY++){
 
-    // updateSprites()
+//   //     if((Math.abs(varx - grid[tempX][tempY].x) < 30) && (Math.abs(vary - grid[tempX][tempY].y)) < 30){
+//   //       grid[tempX][tempY].removeChild();
+//   //     }
 
-}
+//   //   }
+//   // }
 
+//   grid_sprite[varx][vary].removeChild();
+
+
+// }
 
 
 var pieceimages = ["/images/lance.png", "/images/knight.png", "/images/general_silver.png", "/images/general_gold.png", "/images/bishop.png", "/images/rook.png", "/images/pawn.png"]
@@ -173,17 +191,6 @@ console.log(random);
 
 
 
-
-
-function movePiece(obj){
-    // obj.alpha = 0
-  // var e = window.event;
-  //
-  // obj.x = e.clientX;
-  // obj.y = e.clientY;
-  // console.log("x:" + e.clientX + ", y:" + e.clientY);
-}
-// start animating
 animate();
 
 function animate() {
