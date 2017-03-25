@@ -80,15 +80,14 @@ function updateSprites()
             piece.clicks = 0;
             piece.interactive = true;
             piece.hitArea = new PIXI.Rectangle(0, 0, 80, 80);
-            grid_sprite[x][y] = piece;
+            // grid_sprite[x][y] = piece;
 
             piece.mouseover = function(mouseData)
             {
-              console.log("mouseover");
               piece.state = "mouseover";
               this.alpha = .6;
-              while(piece.clicks == 1){
-                  stage.removeChild(piece);
+              if(piece.clicks == 1){
+                //   stage.removeChild(piece);
                   piece.state = "moving";
                   movePiece(piece);
 
