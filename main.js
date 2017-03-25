@@ -13,15 +13,7 @@ var grid_sprite = [];
 for(var x = 0; x < 9; x++)
 {
   grid_sprite.push([]);
-  for(var y = 0; y < 9; y++)
-  {
-    var piece = PIXI.Sprite.fromImage("images/oc.jpg");
-    piece.x = x*80;
-    piece.y = y*80;
-    app.stage.addChild(piece);
-    grid_sprite[x].push(piece);
 
-  }
 }
 
 var grid = [];
@@ -61,8 +53,8 @@ function updateSprites()
         {
           piece = PIXI.Sprite.fromImage("images/dark_oc.jpg");
         }
-        piece.x = x*80;
-        piece.y = y*80;
+        piece.x = x*78 + 18.5;
+        piece.y = y*78 + 18.;
         app.stage.addChild(piece);
         grid_sprite[x][y] = piece;
     }
