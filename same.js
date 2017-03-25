@@ -275,4 +275,4 @@ function animate() {
 };
 
 
-updateSprites();
+// updateSprites();
