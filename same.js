@@ -50,12 +50,12 @@ createSprites();
 
 function createSprites()
 {
-    for (var x = 0; x < 1; x++) {
+    for (var x = 0; x < 2; x++) {
         for (itr in random) {
             xy = get_ranxy()
             piece = PIXI.Sprite.fromImage(random[itr])
-            piece.x = xy[0]*78 + 18.5;
-            piece.y = xy[1]*78 + 6;
+            piece.x = (xy[0]*78 + 18.5);
+            piece.y = (xy[1]*78 + 6)  + (x*468);
             places.push([xy[0],xy[1]])
 
             piece.state = "alive";
