@@ -1,0 +1,20 @@
+{
+  "name": "really-bad-shogi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wdpark/really-bad-shogi.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wdpark/really-bad-shogi/issues"
+  },
+  "homepage": "https://github.com/wdpark/really-bad-shogi#readme"
+}
