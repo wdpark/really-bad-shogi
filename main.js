@@ -49,25 +49,30 @@ function updateSprites()
             piece.state = "alive";
             piece.clicks = 0;
             piece.interactive = true;
-            piece.hitArea = new PIXI.Rectangle(piece.x, piece.y, 70, 70);
+            piece.hitArea = new PIXI.Rectangle(piece.x, piece.y, 78, 78);
+
 
             piece.mouseover = function(mouseData)
             {
               console.log("mouseover");
               piece.state = "mouseover";
+              while(piece.clicks == 1){
+                app.stage.removeChild(piece);
+                piece.state = "moving";
+                movePiece(piece);
+                app.stage.addChild(piece);
+                console.log(piece.x + ", " + piece.y);
+              }
             }
 
             piece.click = function(mouseData)
             {
               piece.clicks ++;
               console.log("mouseClick");
-              // if(piece.clicks == 1){
-              //   piece.state = movin
-              // }
-              // if(piece.clicks == 2 && ){
-              //   piece.x = event.clientX;
-              //   piece.y = event.clientY;
-              // }
+              if(piece.clicks == 2){
+                movePiece(piece);
+                piece.clicks == 0;
+              }
             }
 
             app.stage.addChild(piece);
@@ -83,6 +88,17 @@ function updateSprites()
         }
     }
 }
+
+function movePiece(obj){
+
+  var e = window.event;
+
+  obj.x = e.clientX;
+  obj.y = e.clientY;
+  console.log("x:" + e.clientX + ", y:" + e.clientY);
+
+}
+
 
 //changes the piece
 grid[2][2].pieceid = 1;
